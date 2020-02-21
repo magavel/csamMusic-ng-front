@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
 import { PartitionService } from 'src/app/partition.service';
 import { ActivatedRoute } from '@angular/router';
 import { Partition } from 'src/app/models/partition';
@@ -26,7 +26,8 @@ export class EditPartitionComponent implements OnInit {
     this.partitionService.getPartitionById(this.partitionId)
       .subscribe(data=>{
         this.partition = data;
-      }, error=>console.error(error)
+      }, 
+      error=>console.error(error)
       );
       this.createForm();
   }
@@ -48,12 +49,19 @@ export class EditPartitionComponent implements OnInit {
       description: ''
     })
   }
-  updatePartition(){
-    
+  updatePartition(formDirective: FormGroupDirective){
+    if(this.editForm.valid){
+      console.log(this.editForm.value);
+      this.partitionService
+        .updatePartition(this.partitionId, this.editForm.value)
+        .subscribe(data=>this.handleSuccess(data, formDirective), err=>this.handleError(err)
+        )
+
+    }
   }
 
   uploadFilePartition(){
-    //on recupere l'element file uploadde type file
+    //on recupere l'element file uploadde type partitionFile
     let inputEl: HTMLInputElement = this.element.nativeElement.querySelector('#partitionFile');
     let fileCount: number = inputEl.files.length;
     let formData = new FormData();
@@ -63,8 +71,13 @@ export class EditPartitionComponent implements OnInit {
     }
   }
 
+  handleSuccess(data: any ,formDirective:FormGroupDirective){
+    console.log(data);
+    this.editForm.reset();
+    formDirective.resetForm();
+    this.partitionService.dispatchPartitionCreated(data._id);
+  }
   handleError(err){
     console.error(err)
   }
-
 }

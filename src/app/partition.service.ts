@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Partition } from './models/partition';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { Partition } from './models/partition';
 })
 export class PartitionService {
   baseUrl = 'http://localhost:3000/api/v1/partitions';
+  private partitionCreated= new Subject<string>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,6 +19,13 @@ export class PartitionService {
   uploadPartition(formData:FormData){
     return this.httpClient.post<any>(`${this.baseUrl}/files`, formData);
   }
+  
+  dispatchPartitionCreated(id:string){
+    this.partitionCreated.next(id);
+  }
+  handlePartitionCreated(){
+    return this.partitionCreated.asObservable();
+  }
 
   getPartitions(): Observable<Partition[]>{
     return this.httpClient.get<Partition[]>(this.baseUrl)
@@ -25,6 +33,10 @@ export class PartitionService {
 
   getPartitionById(id:string):Observable<Partition>{
     return this.httpClient.get<Partition>(`${this.baseUrl}/${id}`);
+  }
+
+  updatePartition(id:string, partition:Partition){
+    return this.httpClient.put(`${this.baseUrl}/${id}`, partition);
   }
 
   deleteSinglePartition(id:string){
