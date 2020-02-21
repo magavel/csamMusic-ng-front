@@ -5,30 +5,33 @@
  
             <mat-form-field appearance="fill">
                 <mat-label>Titre</mat-label>
-                <input matInput formControlName="title" [value]="partition.title">
+                <input matInput formControlName="title" [(ngModel)]="partition.title" name="title">
               </mat-form-field>
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Sous titre</mat-label>
-                <input matInput formControlName="subTitle" [value]="partition.subTitle">
+                <input matInput formControlName="subTitle" [(ngModel)]="partition.subTitle" name="subTitle">
               </mat-form-field>
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Compositeur</mat-label>
-                <input matInput formControlName="composeur" [value]="partition.composeur">
+                <input matInput formControlName="composeur" [(ngModel)]="partition.composeur" name="composeur">
               </mat-form-field>
               <br>
-              <mat-form-field appearance="fill">
-                <mat-label>Instrument</mat-label>
-                <mat-select-trigger formControlName="instruments">
-                            //a faire
-                </mat-select-trigger>
-              </mat-form-field>
+              <!--
+              
+                <mat-form-field appearance="fill">
+                  <mat-label>Instrument</mat-label>
+                  <mat-select-trigger formControlName="instruments">
+                              //a faire
+                  </mat-select-trigger>
+                </mat-form-field>
+              -->
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <textarea matInput placeholder="N'hésitez pas..." formControlName="description" [value]="partition.description"></textarea>
-              </mat-form-field>
+                <app-ngx-editor  matInput [(ngModel)]="partition.description" name="description" placeholder="N'hésitez pas..." [spellcheck]="true" formControlName="description" required></app-ngx-editor >
+                </mat-form-field>
 
               <br>
               <mat-form-field appearance="fill">

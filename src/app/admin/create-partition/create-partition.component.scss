@@ -1,17 +1,16 @@
 .example-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   padding-top: 10px;
-  width: 700px;
-  margin: 0 auto;
-  }
-  mat-form-field{
-    width: 80%;
-  }
+}
+mat-form-field{
+  width: 100%;
+}
+.centrage{
+  width: 80%;
   
-  .example-container > * {
-    width: 100%;
-  }
+}
 
   .example-additional-selection {
     opacity: 0.75;

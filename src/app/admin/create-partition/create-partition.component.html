@@ -1,58 +1,60 @@
 <div class="example-container">
-  <form [formGroup]="creationForm" #formDirective="ngForm" (ngSubmit)="createPartition(formDirective)">
-
-    <mat-form-field appearance="fill">
-      <mat-label>Titre</mat-label>
-      <input matInput formControlName="title" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Sous titre</mat-label>
-      <input matInput formControlName="subTitle" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Compositeur</mat-label>
-      <input matInput formControlName="composeur">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Instrument</mat-label>
-      <mat-select formControlName="instruments" required multiple>
-        <mat-option *ngFor="let instrument of listIntruments" [value]="instrument">{{instrument}}</mat-option>
-      </mat-select>
-
-    </mat-form-field>
-    <br>
-
-      <mat-label>Description</mat-label>
-      <app-ngx-editor  matInput placeholder="N'hésitez pas..." [spellcheck]="true" formControlName="description" required></app-ngx-editor >
-   
-    <mat-form-field appearance="fill">
-      <mat-label>Tonalité</mat-label>
-      <input matInput formControlName="tonalite" required>
-    </mat-form-field>
-    <div>
+  <div class="centrage">
+    <form [formGroup]="creationForm" #formDirective="ngForm" (ngSubmit)="createPartition(formDirective)">
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Sous titre</mat-label>
+        <input matInput formControlName="subTitle" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Compositeur</mat-label>
+        <input matInput formControlName="composeur">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Instrument</mat-label>
+        <mat-select formControlName="instruments" required multiple>
+          <mat-option *ngFor="let instrument of listIntruments" [value]="instrument">{{instrument}}</mat-option>
+        </mat-select>
+  
+      </mat-form-field>
+      <br>
+  
+        <mat-label>Description</mat-label>
+        <app-ngx-editor  matInput placeholder="N'hésitez pas..." [spellcheck]="true" formControlName="description" required></app-ngx-editor >
+     
+      <mat-form-field appearance="fill">
+        <mat-label>Tonalité</mat-label>
+        <input matInput formControlName="tonalite" required>
+      </mat-form-field>
       <div>
-        <label for="partitionFile">Enregistrer une partition pdf</label>
-        <input name="partitionFile" type="file" id="partitionFile" formControlName="partitionFile">
-        <button type="button" mat-raised-button color="accent" (click)="uploadFilePartition()" [disabled]="">Envoi de la
-          partition</button>
+        <div>
+          <label for="partitionFile">Enregistrer une partition pdf</label>
+          <input name="partitionFile" type="file" id="partitionFile" formControlName="partitionFile">
+          <button type="button" mat-raised-button color="accent" (click)="uploadFilePartition()" [disabled]="">Envoi de la
+            partition</button>
+        </div>
+        <div>
+          <label for="abcFile">Enregistrer un fichier abc</label>
+          <input name="abcFile" type="file">
+          <button type="button" mat-raised-button color="accent" (click)="uploadFileAbc()">Envoi du fichier abc</button>
+        </div>
+        <div>
+          <label for="imageFile">Enregistrer un fichier image</label>
+          <input name="imageFile" type="file">
+          <button type="button" mat-raised-button color="accent" (click)="uploadFileImage()">Envoi du fichier image</button>
+        </div>
       </div>
-      <div>
-        <label for="abcFile">Enregistrer un fichier abc</label>
-        <input name="abcFile" type="file">
-        <button type="button" mat-raised-button color="accent" (click)="uploadFileAbc()">Envoi du fichier abc</button>
-      </div>
-      <div>
-        <label for="imageFile">Enregistrer un fichier image</label>
-        <input name="imageFile" type="file">
-        <button type="button" mat-raised-button color="accent" (click)="uploadFileImage()">Envoi du fichier image</button>
-      </div>
-    </div>
-    <br>
-
-    <button mat-raised-button color="accent" type="submit" [disabled]="!creationForm.valid">Creation de la fiche
-      partition</button>
-  </form>
+      <br>
+  
+      <button mat-raised-button color="accent" type="submit" [disabled]="!creationForm.valid">Creation de la fiche
+        partition</button>
+    </form>
+  </div>
 </div>
