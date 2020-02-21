@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Playlists</h1>
+<div mat-dialog-content class="content">
+  Playlists existantes:
+  {{data.playlist}}
+  <ul>
+    <li>
+      <span *ngIf="data.playlist[0] === 'defile'">&#10003;</span> Défilé
+    </li>
+    <li>
+      <span *ngIf="data.playlists === 'danse'">&#10003;</span> danse
+    </li>
+    <li>
+      <span *ngIf="data.playlists === 'pub'">&#10003;</span> Pub
+    </li>
+  </ul>
+  
+    <button mat-mini-fab color="accent" [routerLink]="['partitions/playlists']">
+        <mat-icon svgIcon="add" aria-hidden="false"></mat-icon>
+      </button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+
+</div>

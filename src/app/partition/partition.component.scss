@@ -1,0 +1,20 @@
+.container{
+padding: 10px;
+}
+
+  .partitionList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    & mat-chip{
+      margin-bottom: 1em;
+  
+    }
+  }
+
+.logoUpload{
+  width: 50px;
+  
+  }
+

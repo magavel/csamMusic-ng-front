@@ -1,0 +1,69 @@
+<div class="container">
+  <mat-card class="example-card" *ngIf="partition else loading">
+    <form [formGroup] = "editForm" #formDirective = "ngForm" (submit)="updatePartition(formDirective)">
+        <div class="example-container">
+ 
+            <mat-form-field appearance="fill">
+                <mat-label>Titre</mat-label>
+                <input matInput formControlName="title" [value]="partition.title">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Sous titre</mat-label>
+                <input matInput formControlName="subTitle" [value]="partition.subTitle">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Compositeur</mat-label>
+                <input matInput formControlName="composeur" [value]="partition.composeur">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Instrument</mat-label>
+                <mat-select-trigger formControlName="instruments">
+                            //a faire
+                </mat-select-trigger>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="N'hésitez pas..." formControlName="description" [value]="partition.description"></textarea>
+              </mat-form-field>
+
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Tonalité</mat-label>
+                <input matInput formControlName="tonalite" [value]="partition.tonalite">
+              </mat-form-field>
+              <div>
+                <div>
+                  <label for="partitionFile">Enregistrer une partition pdf</label>
+                  <input name="partitionFile" type="file" id="partitionFile" formControlName="partitionFile">
+                  <button type="button" mat-raised-button color="accent" (click)="uploadFilePartition()" [disabled]="">Envoi de la
+                    partition</button>
+                </div>
+                <div>
+                  <label for="abcFile">Enregistrer un fichier abc</label>
+                  <input name="abcFile" type="file">
+                  <button type="button" mat-raised-button color="accent" (click)="uploadFileAbc()">Envoi du fichier abc</button>
+                </div>
+                <div>
+                  <label for="imageFile">Enregistrer un fichier image</label>
+                  <input name="imageFile" type="file">
+                  <button type="button" mat-raised-button color="accent" (click)="uploadFileImage()">Envoi du fichier image</button>
+                </div>
+              </div>
+              <br>
+          
+              <button mat-raised-button color="accent" type="submit">Mise à jour de la fiche
+                partition</button>
+
+        </div>
+
+    </form>
+
+  </mat-card>
+
+
+  <ng-template #loading> Chargement en cours...</ng-template>
+</div>

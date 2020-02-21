@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="centrage">
+    <button mat-fab color="accent" [routerLink]="['/admin/creationPartition']">
+      <mat-icon svgIcon="create" aria-hidden="false"></mat-icon>
+    </button>
+    <mat-selection-list #partitions>
+      <mat-list-option *ngFor="let partoche of allPartitions" [value]="partoche._id">
+        <a [routerLink]="['partitions', partoche._id]">{{partoche.title}}</a>
+      </mat-list-option>
+    </mat-selection-list>
+    <mat-card>
+      <p>
+        Partitions sélectionnées: {{partitions.selectedOptions.selected.length}}
+      </p>
+      <mat-card-actions>
+        <button mat-fab color="warn" *ngIf="partitions.selectedOptions.selected.length > 0"
+          (click)="deletePartitions(partitions.selectedOptions.selected)">
+          <mat-icon svgIcon="delete" aria-hidden="false"></mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

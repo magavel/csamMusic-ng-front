@@ -1,0 +1,43 @@
+$badge-diameter : 40px;
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+a:visited, a {
+  text-decoration: none;
+  color: black;
+}
+.badge{
+    width: $badge-diameter;
+    height: $badge-diameter;
+    border-radius: $badge-diameter/2;
+}
+.example-card {
+    width: 270px;
+    margin-top: 20px;
+    background-color:#EEEEEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .example-header-image {
+    background-image: url('src/assets/bretagne.png');
+    background-size: cover;
+  }
+
+.partitionList{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  & mat-chip{
+    margin-bottom: 1em;
+
+  }
+}
+.logoUpload{
+  width: 2em;
+}

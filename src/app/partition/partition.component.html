@@ -1,0 +1,43 @@
+<div class="container">
+
+  <mat-card class="example-card" *ngIf="partition else loading">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{partition?.title}}</mat-card-title>
+      <mat-card-subtitle>{{partition.subTitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="partitionList">
+
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip color="primary" selected *ngIf="partition.tonalite">{{partition.tonalite}}</mat-chip>
+        <mat-chip color="accent" selected *ngIf="partition.genre">{{partition.genre}}</mat-chip>
+        <mat-chip color="warn" selected *ngIf="partition.pays">{{partition.pays}}</mat-chip>
+      </mat-chip-list>
+
+      <mat-chip-list aria-label="Fish selection" *ngFor="let item of partition.instruments">
+        <mat-chip>{{item}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <mat-card-content>
+      <p>Description:</p>
+      <p>
+        {{partition.description}}
+      </p>
+      <p>Télécharger la partition: </p>
+      <p>
+        <a [href]="partitionFilePath + partition.partitionFile" target="blank">
+          <img class="logoUpload" src="assets/logo-pdf.png" alt="Partition">
+        </a>
+      </p>
+    </mat-card-content>
+    <mat-card-content>
+      <div id="opensheet"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-fab color="primary" [routerLink]="['/admin/creationPartition']">
+        <mat-icon svgIcon="add" aria-hidden="false"></mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <ng-template #loading> Chargement en cours...</ng-template>
+</div>
