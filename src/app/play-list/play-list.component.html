@@ -1,1 +1,16 @@
-<p>play-list works!</p>
+
+
+
+
+<div *ngFor="let playlist of playlists">
+  <a [routerLink]="['/partitions/playlists', playlist.id]" > {{ playlist.Title}} </a>
+  avec:
+  <div cdkDropList class=" example-list" (cdkDropListDropped)="drop($event)">
+    <div class=" example-box" *ngFor="let parto of playlist.partitions" cdkDrag>
+      <p class="">
+       <a  [routerLink]="['/partitions', parto.id]">{{ parto.title}} </a>
+      </p>
+    </div>
+  </div>
+</div>
+

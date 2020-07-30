@@ -1,15 +1,17 @@
 export interface Partition {
-    _id?: string;
+    id?: string;
     title: string,
     subTitle: string,
+    text:string,
     images: [string],
     description: string,
     composeur?: string,
-    pays:string,
-    genre: string,
+    pays: { name: string, flag: string },
+    genre: {name: string },
     instruments: [string],
-    tonalite: string,
+    tonalites: {name:string},
     partitionFile: string,
     abc: string,
-    midi: string
+    midi: string,
+    playlists: [string],
 }

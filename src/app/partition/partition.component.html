@@ -9,26 +9,32 @@
     <div class="partitionList">
 
       <mat-chip-list aria-label="Fish selection">
-        <mat-chip color="primary" selected *ngIf="partition.tonalite">{{partition.tonalite}}</mat-chip>
-        <mat-chip color="accent" selected *ngIf="partition.genre">{{partition.genre}}</mat-chip>
-        <mat-chip color="warn" selected *ngIf="partition.pays">{{partition.pays}}</mat-chip>
+        <mat-chip color="primary" selected *ngIf="partition.tonalites.name">{{partition.tonalites.name}}</mat-chip>
+        <mat-chip color="accent" selected *ngIf="partition.genre">{{partition.genre.name}}</mat-chip>
+        <mat-chip color="warn" selected *ngIf="partition.pays">{{partition.pays.name}}</mat-chip>
       </mat-chip-list>
 
-      <mat-chip-list aria-label="Fish selection" *ngFor="let item of partition.instruments">
-        <mat-chip>{{item}}</mat-chip>
-      </mat-chip-list>
+      <div *ngIf="partition.instruments" >
+        <mat-chip-list aria-label="Fish selection" *ngFor="let item of partition.instruments">
+          <mat-chip>{{item.name}}</mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
     <mat-card-content>
       <p>Description:</p>
       <p [innerHTML]="partition.description">
-  
+
       </p>
-      <p>Télécharger la partition: </p>
+      <h3>Télécharger la partition: </h3>
       <p>
         <a [href]="partitionFilePath + partition.partitionFile" target="blank">
           <img class="logoUpload" src="assets/logo-pdf.png" alt="Partition">
         </a>
       </p>
+      <app-abc-player [abcFile]="partition.abc"></app-abc-player>
+
+      <p [innerHTML]="partition.text"></p>
+
     </mat-card-content>
     <mat-card-content>
       <div id="opensheet"></div>

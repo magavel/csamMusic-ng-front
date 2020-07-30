@@ -1,0 +1,7 @@
+<h2>Playlist : {{ playlist?.Title }}</h2>
+  <div *ngFor="let parto of playlist?.partitions">
+    {{parto.title}}
+    <app-abc-player *ngIf="parto.abc" [abcFile]="parto.abc"></app-abc-player>
+  </div>
+
+

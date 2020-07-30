@@ -1,4 +1,10 @@
 $badge-diameter : 40px;
+.position {
+  position: absolute;
+  top: 3em;
+  right: 1em;
+  z-index: 2222222222;
+}
 .container{
     display: flex;
     flex-direction: row;
@@ -22,9 +28,9 @@ a:visited, a {
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   .example-header-image {
-    background-image: url('src/assets/bretagne.png');
+   //  background-image: url('../../assets/flags/br.png');
     background-size: cover;
   }
 

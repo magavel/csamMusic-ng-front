@@ -6,11 +6,13 @@ import { CreatePartitionComponent } from './admin/create-partition/create-partit
 import { AdminComponent } from './admin/admin/admin.component';
 import { EditPartitionComponent } from './admin/edit-partition/edit-partition.component';
 import { PlayListComponent } from './play-list/play-list.component';
+import {PlaylistDetailComponent} from "./playlist-detail/playlist-detail.component";
 
 
 const routes: Routes = [
   {path:'partitions', component:PartitionsComponent},
   {path:'partitions/playlists', component:PlayListComponent},
+  {path:'partitions/playlists/:id', component:PlaylistDetailComponent},
   {path:'partitions/:id', component:PartitionComponent},
   {path:'admin', component:AdminComponent},
   {path:'admin/partitions/:id', component:EditPartitionComponent},

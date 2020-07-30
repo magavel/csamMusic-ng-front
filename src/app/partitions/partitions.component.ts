@@ -1,17 +1,15 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Partition } from '../models/partition';
-import { PartitionService } from '../partition.service';
+
+import { PartitionService } from '../services/partition.service';
+import { PlaylistService } from '../services/playlist.service';
+
 import { environment } from '../../environments/environment'
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialogPopupComponent } from '../mat-dialog-popup/mat-dialog-popup.component';
-
-
-export interface DialogData {
-  playlists: 'defile' | 'danse' | 'pub';
-}
 
 
 @Component({
@@ -22,11 +20,13 @@ export interface DialogData {
 export class PartitionsComponent implements OnInit {
   partitions:Partition[];
   partitionFilePath = environment.partitionFilePath;
-  playlists: string[] = ["defile", "danse"];
+  playlists;
+  flagPath = '../../assets/flags/br.png';
 
   constructor(
-    private partitionService: PartitionService, 
-    iconRegistry: MatIconRegistry, 
+    private partitionService: PartitionService,
+    private playlistService: PlaylistService,
+    iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer  ,
     public dialog: MatDialog
     ) {
@@ -57,7 +57,14 @@ export class PartitionsComponent implements OnInit {
     this.partitionService.getPartitions()
       .subscribe(data=>{
         this.partitions = data
+
       });
+    this.playlistService.getPlaylist()
+      .subscribe(data => {
+        this.playlists = data
+
+      }
+    )
   }
 
 }

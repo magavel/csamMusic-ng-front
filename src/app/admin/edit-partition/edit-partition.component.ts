@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
-import { PartitionService } from 'src/app/partition.service';
+import { PartitionService } from 'src/app/services/partition.service';
 import { ActivatedRoute } from '@angular/router';
 import { Partition } from 'src/app/models/partition';
 
@@ -14,10 +14,10 @@ export class EditPartitionComponent implements OnInit {
   partitionId: string;
   partition: Partition;
 
-  constructor( 
-    private fb:FormBuilder, 
-    private partitionService:PartitionService, 
-    private element: ElementRef, 
+  constructor(
+    private fb:FormBuilder,
+    private partitionService:PartitionService,
+    private element: ElementRef,
     private activatedRoute: ActivatedRoute
     ) { }
 
@@ -26,7 +26,7 @@ export class EditPartitionComponent implements OnInit {
     this.partitionService.getPartitionById(this.partitionId)
       .subscribe(data=>{
         this.partition = data;
-      }, 
+      },
       error=>console.error(error)
       );
       this.createForm();

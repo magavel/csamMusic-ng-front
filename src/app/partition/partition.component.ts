@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { PartitionService } from '../partition.service';
+import { PartitionService } from '../services/partition.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Partition } from '../models/partition';
@@ -18,9 +18,13 @@ export class PartitionComponent implements OnInit {
 
   partition: Partition;
   partitionFilePath = environment.partitionFilePath;
-  musicXml:``;
+  musicXml=``;
 
-  constructor(private activatedRoute:ActivatedRoute ,private partitionService: PartitionService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(
+    private activatedRoute:ActivatedRoute ,
+    private partitionService: PartitionService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
         'add',
         sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add-24px.svg'));

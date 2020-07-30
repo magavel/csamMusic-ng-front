@@ -18,6 +18,9 @@ import { EditPartitionComponent } from './admin/edit-partition/edit-partition.co
 import { PlayListComponent } from './play-list/play-list.component';
 import { MatDialogPopupComponent } from './mat-dialog-popup/mat-dialog-popup.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import {AbcPlayerComponent} from "./abc-player/abc-player.component";
+import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
+import { MultiAbcPlayerComponent } from './multi-abc-player/multi-abc-player.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     CreatePartitionComponent,
     EditPartitionComponent,
     PlayListComponent,
-    MatDialogPopupComponent
+    MatDialogPopupComponent,
+    AbcPlayerComponent,
+    PlaylistDetailComponent,
+    MultiAbcPlayerComponent
   ],
   imports: [
     BrowserModule,

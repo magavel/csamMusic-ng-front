@@ -1,5 +1,5 @@
 import { Component, OnInit , Inject} from '@angular/core';
-import { PartitionService } from 'src/app/partition.service';
+import { PartitionService } from 'src/app/services/partition.service';
 import { Partition } from 'src/app/models/partition';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
@@ -18,10 +18,10 @@ export class AdminComponent implements OnInit {
   allPartitions:Partition[];
 
   constructor(
-    private partitionService: PartitionService, 
-    iconRegistry: MatIconRegistry, 
-    sanitizer: DomSanitizer, 
-  
+    private partitionService: PartitionService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+
     ) {
     iconRegistry.addSvgIcon(
         'add',
@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
 
 
 
-  
+
 
   ngOnInit() {
     this.partitionService.getPartitions()
