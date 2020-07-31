@@ -10,6 +10,7 @@ import {PlaylistDetailComponent} from "./playlist-detail/playlist-detail.compone
 
 
 const routes: Routes = [
+  {path:'', component:PartitionsComponent},
   {path:'partitions', component:PartitionsComponent},
   {path:'partitions/playlists', component:PlayListComponent},
   {path:'partitions/playlists/:id', component:PlaylistDetailComponent},

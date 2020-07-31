@@ -25,12 +25,14 @@
       <p [innerHTML]="partition.description">
 
       </p>
-      <h3>Télécharger la partition: </h3>
-      <p>
-        <a [href]="partitionFilePath + partition.partitionFile" target="blank">
-          <img class="logoUpload" src="assets/logo-pdf.png" alt="Partition">
-        </a>
-      </p>
+      <div *ngIf="partition.partitionFile.length">
+        <h3>Télécharger la partition: </h3>
+        <p>
+          <a [href]="partitionFilePath + partition.partitionFile" target="blank">
+            <img class="logoUpload" src="assets/logo-pdf.png" alt="Partition">
+          </a>
+        </p>
+      </div>
       <app-abc-player [abcFile]="partition.abc"></app-abc-player>
 
       <p [innerHTML]="partition.text"></p>
